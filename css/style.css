@@ -1,0 +1,157 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Game styles */
+.game-page {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem;
+  min-height: 100vh;
+  background: darkgreen;
+}
+
+.game {
+  position: relative;
+  display: inline-block;
+  color: white;
+  text-align: center;
+}
+
+.game .chalk-board {
+  
+}
+
+.game .chalk-board > img {
+  width: 100%;
+}
+
+.game .overlay-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+}
+
+.game .game-details {
+  margin-top: 8px;  
+}
+
+.game .game-board {}
+
+.game .board-cells-list {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 8px auto 0 auto;
+  width: 150px;
+}
+
+/* Board cell */
+.game .board-cells-list > li {
+  position: relative;
+  width: 33.333333%;
+  height: 50px;
+  border: 1px solid rgba(255, 255, 255, .5);
+}
+
+.game .board-cells-list > li.win {
+  background: rgba(255, 255, 255, .1);
+}
+
+/* Add hover effect on cell hover */
+.game .board-cells-list > li:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, .1);
+}
+
+/* Remove hover effect if cell already clicked */
+.game .board-cells-list > li:hover.cross,
+.game .board-cells-list > li:hover.circle {
+  background: transparent;
+  cursor: default;
+}
+
+.game .board-cells-list > li:not(:nth-child(3n)) {
+  border-right: none;
+}
+
+.game .board-cells-list > li:nth-child(-n + 6) {
+  border-bottom: none;
+}
+
+.game .board-cells-list > li.cross::before,
+.game .board-cells-list > li.circle::before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.game .game-details .current-turn {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.game .game-details .current-turn .cross::before,
+.game .game-details .current-turn .circle::before {
+  display: inline-block;
+  margin-left: .5rem;
+  font-size: 1.5rem;
+  font-weight: bold
+}
+
+.game .board-cells-list > li.cross::before,
+.game .game-details .current-turn .cross::before {
+  content: 'X';
+  color: lightgreen;
+}
+
+.game .board-cells-list > li.circle::before,
+.game .game-details .current-turn .circle::before {
+  content: 'O';
+  color: red;
+}
+
+
+.game-replay {
+  display: none;
+  margin-top: 16px;
+}
+
+.game-replay.show {
+  display: block;
+}
+
+.game-replay > button {
+  border: none;
+  box-shadow: none;
+  background: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: bold;
+  margin-top: 4px;
+  cursor: pointer;
+}
