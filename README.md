@@ -7,11 +7,12 @@ Demo: [https://paulnguyen-mn.github.io/js-tic-tac-toe/](https://paulnguyen-mn.gi
 
 ## Game elements
 
-| Element             | Available class    | Desc                  |
-| ------------------- | ------------------ | --------------------- |
-| `span`#currentTurn  | cross, circle      | Show current turn     |
-| `button`#replayGame | show, hide         | Show/Hide replay game |
-| `ul`#cellList > li  | cross, circle, win | Cell element          |
+| Element             | Available class    | Desc                                    |
+| ------------------- | ------------------ | --------------------------------------- |
+| `span`#currentTurn  | cross, circle      | Show current turn                       |
+| `span`#gameStatus   |                    | Game status                             |
+| `button`#replayGame | show               | Show/Hide replay game (hide by default) |
+| `ul`#cellList > li  | cross, circle, win | Cell element                            |
 
 ## Folder structure
 
