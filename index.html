@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Tic tac toe game</title>
+    <title>tic tac toe game | Easy Frontend</title>
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -17,11 +17,15 @@
         </div>
 
         <div class="overlay-content">
-          <h1>Tic tac toe</h1>
+          <h1>tic tac toe</h1>
+
+          <p class="game-status">
+            Status: <span id="gameStatus">LOADING</span>
+          </p>
 
           <div class="game-details">
             <p class="current-turn">
-              <span>Current turn: </span>
+              <span>TURN: </span>
               <span id="currentTurn" class="cross"></span>
             </p>
           </div>
@@ -40,14 +44,13 @@
             </ul>
           </div>
 
-          <div id="replayGame" class="game-replay">
-            <p>WIN!!!</p>
-            <button>Replay</button>
+          <div class="game-replay">
+            <button id="replayGame">Replay</button>
           </div>
         </div>
       </div>
     </section>
 
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>

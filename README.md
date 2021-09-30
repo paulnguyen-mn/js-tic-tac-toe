@@ -3,7 +3,7 @@
 A simple tic tac toe game using vanilla javascript.
 This repo is used for teaching purpose.
 
-Demo: https://paulnguyen-mn.github.io/js-tic-tac-toe/
+Demo: [https://paulnguyen-mn.github.io/js-tic-tac-toe/](https://paulnguyen-mn.github.io/js-tic-tac-toe/)
 
 ## Game elements
 
@@ -13,18 +13,35 @@ Demo: https://paulnguyen-mn.github.io/js-tic-tac-toe/
 | `button`#replayGame | show, hide         | Show/Hide replay game |
 | `ul`#cellList > li  | cross, circle, win | Cell element          |
 
+## Folder structure
+
+```sh
+js-tic-tac-toe
+|__ css
+|__ images
+|__ js
+|  |__ main.js      # entry point
+|  |__ constants.js # where all constants are defined
+|  |__ selectors.js # selectors to get all DOM elements needed
+|  |__ utils.js     # having shared functions to reuse
+|
+|__ index.html
+```
+
+<div style="page-break-after: always;"></div>
+
 ## Game flow
 
 ```mermaid
 graph TD;
 
-A(Init game) --> B(Attach events to game elements);
+B(Init game and Attach events to game elements);
 B --> C(Click on a board cell);
-C --> D(Toggle current turn: X or O);
+
 
 subgraph " "
-D --> E(Mark current turn to selected cell);
-E --> F{isWin?};
+C --> D(Set selected cell and Toggle current turn);
+D --> F{isWin?};
 
 F --NO--> H(Continue game);
 F --YES--> G(Show winner and replay button);
@@ -39,4 +56,4 @@ G --> I(Click replay)
 I --> J(Reset game)
 ```
 
-Happy coding! ❤️
+Happy Coding! 💪

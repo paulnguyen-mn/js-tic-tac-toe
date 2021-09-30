@@ -6,7 +6,7 @@
 
 body {
   font-size: 16px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 ul {
@@ -32,10 +32,6 @@ ul {
   text-align: center;
 }
 
-.game .chalk-board {
-  
-}
-
 .game .chalk-board > img {
   width: 100%;
 }
@@ -50,10 +46,8 @@ ul {
 }
 
 .game .game-details {
-  margin-top: 8px;  
+  margin-top: 8px;
 }
-
-.game .game-board {}
 
 .game .board-cells-list {
   display: flex;
@@ -67,17 +61,17 @@ ul {
   position: relative;
   width: 33.333333%;
   height: 50px;
-  border: 1px solid rgba(255, 255, 255, .5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .game .board-cells-list > li.win {
-  background: rgba(255, 255, 255, .1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* Add hover effect on cell hover */
 .game .board-cells-list > li:hover {
   cursor: pointer;
-  background: rgba(255, 255, 255, .1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* Remove hover effect if cell already clicked */
@@ -118,31 +112,50 @@ ul {
 .game .game-details .current-turn .cross::before,
 .game .game-details .current-turn .circle::before {
   display: inline-block;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
   font-size: 1.5rem;
-  font-weight: bold
+  font-weight: bold;
 }
 
 .game .board-cells-list > li.cross::before,
 .game .game-details .current-turn .cross::before {
-  content: 'X';
+  content: "X";
   color: lightgreen;
 }
 
 .game .board-cells-list > li.circle::before,
 .game .game-details .current-turn .circle::before {
-  content: 'O';
+  content: "O";
   color: red;
 }
 
-
-.game-replay {
-  display: none;
-  margin-top: 16px;
+.current-turn {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
-.game-replay.show {
-  display: block;
+.game-status {
+  margin: 16px 0 8px 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.game-status > span {
+  color: white;
+}
+
+.game-replay {
+  margin-top: 8px;
+}
+
+.game-replay > button {
+  display: none;
+}
+
+.game-replay > button.show {
+  display: inline-block;
 }
 
 .game-replay > button {
