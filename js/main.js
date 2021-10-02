@@ -39,6 +39,11 @@ function showReplayButton() {
   if (replayButton) replayButton.classList.add("show");
 }
 
+function hideReplayButton() {
+  const replayButton = getReplayButtonElement();
+  if (replayButton) replayButton.classList.remove("show");
+}
+
 function highlightWinCells(winPositions) {
   if (!Array.isArray(winPositions) || winPositions.length !== 3) {
     throw new Error("Invalid win positions");
@@ -54,6 +59,8 @@ function handleCellClick(cell, index) {
   const isClicked =
     cell.classList.contains(TURN.CIRCLE) || cell.classList.contains(TURN.CROSS);
   const isEndGame = gameStatus !== GAME_STATUS.PLAYING;
+
+  // only allow to click if game is playing and that cell is not clicked yet
   if (isClicked || isEndGame) return;
 
   // set selected cell
@@ -63,7 +70,6 @@ function handleCellClick(cell, index) {
   cellValues[index] =
     currentTurn === TURN.CIRCLE ? CELL_VALUE.CIRCLE : CELL_VALUE.CROSS;
 
-  // toggle turn
   toggleTurn();
 
   // check game status
@@ -86,8 +92,6 @@ function handleCellClick(cell, index) {
     default:
     // playing
   }
-
-  console.log("click", cell, index);
 }
 
 function initCellElementList() {
@@ -95,6 +99,39 @@ function initCellElementList() {
   cellElementList.forEach((cell, index) => {
     cell.addEventListener("click", () => handleCellClick(cell, index));
   });
+}
+
+function resetGame() {
+  // reset temp global vars
+  currentTurn = TURN.CROSS;
+  gameStatus = GAME_STATUS.PLAYING;
+  cellValues = cellValues.map(() => "");
+
+  // reset dom elements
+  // reset game status
+  updateGameStatus(GAME_STATUS.PLAYING);
+
+  // reset current turn
+  const currentTurnElement = getCurrentTurnElement();
+  if (currentTurnElement) {
+    currentTurnElement.classList.remove(TURN.CIRCLE, TURN.CROSS);
+    currentTurnElement.classList.add(TURN.CROSS);
+  }
+
+  // reset game board
+  const cellElementList = getCellElementList();
+  for (const cellElement of cellElementList) {
+    cellElement.className = "";
+  }
+
+  hideReplayButton();
+}
+
+function initReplayButton() {
+  const replayButton = getReplayButtonElement();
+  if (replayButton) {
+    replayButton.addEventListener("click", resetGame);
+  }
 }
 
 /**
@@ -117,6 +154,5 @@ function initCellElementList() {
   initCellElementList();
 
   // bind click event for replay button
-
-  // ...
+  initReplayButton();
 })();
