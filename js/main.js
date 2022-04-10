@@ -5,10 +5,11 @@ import {
   getGameStatusElement,
 } from "./selectors.js";
 
+import { TURN } from "./constants.js";
 /**
  * Global variables
  */
-let currentTurn = "cross";
+let currentTurn = TURN.CROSS;
 let isGameEnded = false;
 let cellValues = new Array(9).fill("");
 
@@ -28,7 +29,37 @@ let cellValues = new Array(9).fill("");
  *
  */
 
-console.log(getCellElementList());
-console.log(getCurrentTurnElement());
-console.log(getCellElementAtIdx(4));
-console.log(getGameStatusElement());
+function toggleTurn() {
+  currentTurn = currentTurn === TURN.CIRCLE ? TURN.CROSS : TURN.CIRCLE;
+
+  const currentTurnElement = getCurrentTurnElement();
+  if (currentTurnElement) {
+    currentTurnElement.classList.remove(TURN.CIRCLE, TURN.CROSS);
+    currentTurnElement.classList.add(currentTurn);
+  }
+}
+function handleCellClick(cell, index) {
+  const isClicked =
+    cell.classList.contains(TURN.CIRCLE) || cell.classList.contains(TURN.CROSS);
+  if (isClicked) return;
+  // set selected cell
+  cell.classList.add(currentTurn);
+  //toggle turn
+  toggleTurn();
+}
+
+function initCellElement() {
+  const cellElementList = getCellElementList();
+
+  cellElementList.forEach((cell, index) =>
+    cell.addEventListener("click", () => {
+      handleCellClick(cell, index);
+    })
+  );
+}
+
+(() => {
+  //bind click event for all li elements
+  initCellElement();
+  //blind click event for replay button
+})();
