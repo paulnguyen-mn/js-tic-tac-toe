@@ -3,7 +3,15 @@
 // 2. Current Turn
 // 3. Replay Game
 // 4. Game status
-export function getCellElementList() {}
-export function getCurrentTurnElement() {}
-export function getCellElementAtIdx() {}
-export function getGameStatusElement() {}
+export function getCellElementList() {
+  return document.querySelectorAll("#cellList > li");
+}
+export function getCurrentTurnElement() {
+  return document.getElementById("currentTurn");
+}
+export function getCellElementAtIdx(idx) {
+  return document.querySelector(`#cellList > li:nth-child(${idx + 1})`);
+}
+export function getGameStatusElement() {
+  return document.getElementById("gameStatus");
+}
