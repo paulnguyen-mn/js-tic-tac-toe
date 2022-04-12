@@ -16,7 +16,7 @@ let currentTurn = TURN.CROSS;
 let gameStatus = GAME_STATUS.PLAYING;
 let cellValues = new Array(9).fill("");
 
-/**
+/***
  * TODOs
  *
  * 1. Bind click event for all cells
