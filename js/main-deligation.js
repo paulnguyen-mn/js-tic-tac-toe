@@ -4,6 +4,7 @@ import {
   getCellElementAtIdx,
   getGameStatusElement,
   getReplayButtonElement,
+  getCellListElement,
 } from "./selectors.js";
 
 import { CELL_VALUE, GAME_STATUS, TURN } from "./constants.js";
@@ -102,13 +103,29 @@ function handleCellClick(cell, index) {
 }
 
 function initCellElement() {
-  const cellElementList = getCellElementList();
+  //
+  const liList = getCellElementList();
+  if (liList) {
+    liList.forEach((cell, index) => {
+      cell.dataset.idx = index;
+    });
+  }
 
-  cellElementList.forEach((cell, index) =>
-    cell.addEventListener("click", () => {
-      handleCellClick(cell, index);
-    })
-  );
+  const UlList = getCellListElement();
+  if (UlList) {
+    UlList.addEventListener("click", (event) => {
+      if (event.target.tagName !== "LI") return;
+      handleCellClick(event.target, +event.target.dataset.idx);
+    });
+  }
+
+  // const cellElementList = getCellElementList();
+
+  // cellElementList.forEach((cell, index) =>
+  //   cell.addEventListener("click", () => {
+  //     handleCellClick(cell, index);
+  //   })
+  // );
 }
 function retsetGame() {
   // reset temp global vars
