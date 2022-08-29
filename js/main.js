@@ -4,9 +4,13 @@ import {
   getCurrentTurnElement,
   getGameStatusElement,
 } from "./selectors.js";
+// console.log(getCellElementAtIdx(4));
+// console.log(getCellElementList());
+// console.log(getCurrentTurnElement());
+// console.log(getGameStatusElement());
 
 /**
- * Global variables
+ * Global variables ok
  */
 let currentTurn = "cross";
 let isGameEnded = false;
@@ -27,3 +31,7 @@ let cellValues = new Array(9).fill("");
  * 4. On replay button click --> reset game to play again.
  *
  */
+(() => {
+  // bind click event for all li element
+  //  bind click
+})();
